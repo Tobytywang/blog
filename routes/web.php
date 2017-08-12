@@ -2,15 +2,48 @@
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| 首页路由
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| 根目录返回一个随机的首页
 |
 */
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+/*
+|--------------------------------------------------------------------------
+| 前端口路由
+|--------------------------------------------------------------------------
+|
+| 前段路由默认按照时间顺序列出所有文章
+| 1. 可以使用category对目录进行筛选
+|     有个问题：category是后台筛选的
+|
+*/
+Route::get('article', function(){
+  return '所有文章';
+});
+// Route::get('{category}', function($category){
+//   return '你正在访问' . $category . "目录";
+// });
+
+/*
+|--------------------------------------------------------------------------
+| 前端口路由
+|--------------------------------------------------------------------------
+|
+| 前段路由默认按照时间顺序列出所有文章
+| 1. 可以使用category对目录进行筛选
+|     有个问题：category是后台筛选的
+|
+*/
+Route::get('login', function(){
+  return '你小子登陆成功了，恭喜恭喜';
+});
+
+Route::get('404', function(){
+  return view('404');
 });
