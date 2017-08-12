@@ -8,14 +8,15 @@
 | 根目录返回一个随机的首页
 |
 */
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'IndexController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
 |--------------------------------------------------------------------------
-| 前端口路由
+| 前端路由
 |--------------------------------------------------------------------------
 |
 | 前段路由默认按照时间顺序列出所有文章
@@ -32,7 +33,7 @@ Route::get('article', function(){
 
 /*
 |--------------------------------------------------------------------------
-| 前端口路由
+| 后端路由
 |--------------------------------------------------------------------------
 |
 | 前段路由默认按照时间顺序列出所有文章
@@ -40,10 +41,11 @@ Route::get('article', function(){
 |     有个问题：category是后台筛选的
 |
 */
-Route::get('login', function(){
-  return '你小子登陆成功了，恭喜恭喜';
-});
+// Route::get('login', function(){
+//   return view('login.html');
+// });
 
+Route::any('login', 'LoginController@login');
 Route::get('404', function(){
   return view('404');
 });
