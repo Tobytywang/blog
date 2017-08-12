@@ -13,11 +13,11 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        // 文章标签
-        Schema::create('tags', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('tag')->unique();
-        });
+      // 文章标签
+      Schema::create('tags', function (Blueprint $table) {
+          $table->increments('id');
+          $table->string('tag')->unique();
+      });
     }
 
     /**
@@ -27,6 +27,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tags');
     }
 }
