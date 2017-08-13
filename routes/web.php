@@ -44,12 +44,16 @@ Route::get('article', function(){
 // Route::get('login', function(){
 //   return view('login.html');
 // });
+Route::prefix('admin')->group(function(){
+  Route::get('article', 'AdminArticleController@index');
+  Route::get('category', 'AdminCategoryController@index');
+});
 
-Route::any('login', 'LoginController@login');
+// 错误路由
 Route::get('404', function(){
   return view('404');
 });
 
+// auth自动生成的路由
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
