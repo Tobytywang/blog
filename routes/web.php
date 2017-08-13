@@ -44,9 +44,13 @@ Route::get('article', function(){
 // Route::get('login', function(){
 //   return view('login.html');
 // });
-Route::prefix('admin')->group(function(){
-  Route::get('article', 'AdminArticleController@index');
-  Route::get('category', 'AdminCategoryController@index');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    // 这部分需要经过验证
+    Route::get('welcome', 'AdminWelcomeController@index');
+    Route::get('article', 'AdminArticleController@index');
+    Route::get('category', 'AdminCategoryController@index');
+    Route::get('logout', 'Auth\LoginController@logout');
 });
 
 // 错误路由

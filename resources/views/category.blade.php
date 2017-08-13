@@ -18,7 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">吴弓不箭</a>
+        <a class="navbar-brand" href="/admin/welcome">吴弓不箭</a>
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
@@ -31,7 +31,7 @@
                     Java <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">登出</a></li>
+                    <li><a href="/admin/logout">登出</a></li>
                     <!-- <li><a href="#">jmeter</a></li>
                     <li><a href="#">EJB</a></li>
                     <li><a href="#">Jasper Report</a></li>
