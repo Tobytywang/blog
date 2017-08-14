@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // 这部分需要经过验证
     Route::get('welcome', 'AdminWelcomeController@index');
     Route::get('article', 'AdminArticleController@index');
+    Route::get('newarticle', 'AdminArticleController@new');
     Route::get('category', 'AdminCategoryController@index');
     Route::get('logout', 'Auth\LoginController@logout');
 });

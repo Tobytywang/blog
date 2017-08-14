@@ -51,7 +51,7 @@
         <h4>文章</h4>
       </div>
       <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
-        <button type="button" class="btn btn-primary">写文章</button>
+        <a href="/admin/newarticle" type="button" class="btn btn-default">写文章</a>
       </div>
       <div class="col-xs-9 col-sm-6 col-md-5 col-lg-4">
         <form class="form-inline pull-right" role="search">

@@ -11,4 +11,9 @@ class AdminArticleController extends Controller
     {
         return view('article');
     }
+
+    public function new()
+    {
+        return view('newarticle');
+    }
 }
