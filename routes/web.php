@@ -24,9 +24,9 @@ Route::get('/', 'IndexController@index');
 |     有个问题：category是后台筛选的
 |
 */
-Route::get('article', function(){
-  return '所有文章';
-});
+// Route::get('article', function(){
+//   return '所有文章';
+// });
 // Route::get('{category}', function($category){
 //   return '你正在访问' . $category . "目录";
 // });
@@ -61,4 +61,4 @@ Route::get('404', function(){
 
 // auth自动生成的路由
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
