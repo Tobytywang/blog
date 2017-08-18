@@ -19,7 +19,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/admin/welcome">吴弓不箭</a>
+          <a class="navbar-brand" href="/admin">吴弓不箭</a>
       </div>
       <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
@@ -90,7 +90,7 @@
           var editor = editormd("editormd", {
             width: "100%",
             height: 460,
-            path : "../lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+            path : "/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
             toolbarIcons : function(){
               return ["undo", "redo", "|", "bold", "hr", "|", "preview", "watch", "|", "fullscreen", "info", "testIcon", "testIcon2", "file", "faicon", "||", "watch", "fullscreen", "preview", "testIcon"]
             }

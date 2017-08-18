@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +64,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+//    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -120,7 +121,7 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'errorlog'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
@@ -177,6 +178,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Debug ServiceProvider...
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Mpociot\LaravelTestFactoryHelper\TestFactoryHelperServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*

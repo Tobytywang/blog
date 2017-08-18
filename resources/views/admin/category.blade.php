@@ -18,7 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/admin/welcome">吴弓不箭</a>
+        <a class="navbar-brand" href="/admin">吴弓不箭</a>
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">

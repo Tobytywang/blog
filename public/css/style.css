@@ -1,0 +1,203 @@
+body{
+	background-color: #EBEBEB;
+
+}
+/* 标题栏*/
+.navbar {
+}
+.navbar-brand {
+	padding: 0px 35px 0px 40px;
+}
+.navbar-brand img {
+	width:64px;
+	height: 64px;
+}
+
+/* 内容 */
+.crumb {
+	margin-top: 10px;
+}
+.posts {
+	padding: 20px 10px;
+	background: #f8f8f8;
+	margin-top: 10px;
+	margin-bottom: 35px;
+	min-height: 500px;
+	position: relative;
+	overflow: hidden;
+	font-weight: inherit;
+	font-size: 1.175em;
+}
+.posts .title {
+
+}
+.posts .list-unstyled {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	overflow-x: hidden;
+}
+.posts .list-unstyled li {
+	clear: both;
+}
+
+.posts .list-unstyled .time {
+	margin:7px;
+	font-family: inherit;
+	font-size: 18px;
+	text-decoration: none;
+	font-weight: 700;
+	letter-spacing: 1px;
+	color: #444444;
+}
+.posts .list-unstyled li .postname{
+	font-family: inherit;
+	color: #000000;
+	font-size: 18px;
+	text-decoration: none;
+	padding-left: 50px;
+	background: #f8f8f8;
+	padding-right: 0.25em;
+}
+.posttime {
+	font-style: italic;
+	color: #444444;
+	background: #f8f8f8;
+	float: right;
+	padding-left: 0.25em;
+	padding-right: 1em;
+}
+.postname:after {
+	float: left;
+	width: 0;
+	white-space: nowrap;
+	color: #3f3d3a;
+	content: ".............................................................................................................................................................................";
+}
+/* 左侧 */
+.left {
+	background-color: #f8f8f8;
+	padding: 0px 0px 0px 0px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+.left ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 10px 0px 10px 0px;
+}
+.left li {
+  margin: 0px;
+	padding: 5px 0px 5px 0px;
+	font-size: 16px;
+	list-style-type: none;
+}
+.left li a {
+	padding: 0px 0px 0px 20px;
+	display: block;
+	color: #000000;
+	text-decoration: none;
+}
+.left li:hover {
+	background-color: #ececec;
+}
+/* 右侧 */
+.right {
+	background-color: #f8f8f8;
+	padding: 0px 0px 0px 0px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.right .title {
+	background-color: #DEDEDE;
+	margin: 5px 0px 5px 0px;
+	padding: 10px 5px 5px 5px;
+}
+.right .content {
+	background-color: #DFFFFF;
+	margin: 5px 0px 5px 0px;
+	padding: 5px 5px 5px 5px;
+}
+.right img {
+	display: block;
+	margin: 5px auto 15px auto;
+	width:64px;
+	height:64px;
+}
+.right .content p {
+}
+.right .content table {
+	margin:0px;
+	padding:5px;
+}
+.right .content ul {
+	margin:0px;
+	padding:0px 0px 0px 5px;
+}
+.right .content table tr td{
+	padding: 3px;
+	width: 25%;
+	text-align:center;
+}
+
+.main-card {
+	background-color: #555555;
+	height: 478px;
+	width: 100%;
+	margin: 0px;
+	padding: 10px;
+	/*border: 0px solid #000000;*/
+	float: left;
+}
+.main-card:after {
+  content:"\0020";display:block;height:0px;visibility:hidden;clear:both;
+}
+#Jan {
+
+}
+#Feb {
+
+}
+#Mar {
+
+}
+#Apr {
+
+}
+#May {
+
+}
+#May {
+
+}
+#Jun {
+
+}
+#July {
+
+}
+#Aug {
+
+}
+#Sep {
+
+}
+#Oct {
+
+}
+#Nov {
+
+}
+#Dec {
+
+}
+/* 底栏*/
+.copyright {
+	background: #f8f8f8;
+	font-size: 13px;
+	text-align: center;
+	color: #aaaaaa;
+	padding-top: 28px;
+	padding-bottom: 28px;
+	border-top: 1px solid #e0e0e0;
+}

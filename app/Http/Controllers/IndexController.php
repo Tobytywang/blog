@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+//use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Article;
+use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -40,6 +45,18 @@ class IndexController extends Controller
     //     return view('search', compact('articles'));
     // }
     public function index(){
-      echo "这是吴弓的博客";
+        $articles = DB::table('articles')->orderBy('created_at', 'desc')->get();
+        $categories = DB::table('categories')->get();
+//      $users = DB::table('users')->whereBetween('votes', [1, 100])->get();
+        return view("index", compact(['articles' => 'articles', 'categories' => 'categories']));
+//      echo view('index');
+    }
+
+    public function category($category){
+        $cate_id = DB::table('categories')->where('name', $category)->value('id');
+//        $categories = Category::get()->value('name');
+        $categories = DB::table('categories')->get();
+        $articles = DB::table('articles')->where('category_id', $cate_id)->get();
+        return view("index", compact(['articles' => 'articles', 'categories' => 'categories']));
     }
 }

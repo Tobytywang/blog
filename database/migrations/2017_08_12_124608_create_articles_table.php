@@ -15,19 +15,27 @@ class CreateArticlesTable extends Migration
     {
       Schema::create('articles', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('category_id')->unsigned();
+          $table->integer('category_id')->unsigned()->default(0);
           $table->string('slug')->unique();
           $table->string('title');
-          $table->string('subtitle');
+          $table->string('subtitle')->default('');
           // $table->json('content');
-          $table->text('content');
-          $table->text('markdown');
+          $table->text('content')->default('');
+          $table->text('markdown')->default('');
           $table->integer('view_count')->unsigned()->default(0)->index();
-          $table->timestamp('published_at')->nullable();
-          $table->timestamps();
+          $table->timestamp('updated_at')->nullable();
+          $table->timestamp('created_at')->nullable();
+          $table->foreign('category_id')
+              ->references('id')
+              ->on('categories')
+              ->onUpdate('cascade')
+              ->onDelete('cascade');
       });
     }
-
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     /**
      * Reverse the migrations.
      *
@@ -35,6 +43,9 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
+        Schema::table('articles', function(Blueprint $tabel){
+            $table->dropForeign('posts_category_id_foreign');
+        });
         Schema::dropIfExists('articles');
     }
 }

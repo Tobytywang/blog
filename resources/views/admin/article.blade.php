@@ -18,7 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/admin/welcome">吴弓不箭</a>
+        <a class="navbar-brand" href="/admin">吴弓不箭</a>
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
@@ -51,7 +51,7 @@
         <h4>文章</h4>
       </div>
       <div class="col-xs-3 col-sm-4 col-md-4 col-lg-4">
-        <a href="/admin/newarticle" type="button" class="btn btn-default">写文章</a>
+        <a href="/admin/article/new" type="button" class="btn btn-default">写文章</a>
       </div>
       <div class="col-xs-9 col-sm-6 col-md-5 col-lg-4">
         <form class="form-inline pull-right" role="search">
