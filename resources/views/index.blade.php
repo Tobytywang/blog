@@ -37,6 +37,7 @@
           {{--<li class=""><a href="#">随笔</a></li>--}}
         </ul>
       </div>
+      {{--{{$articles->links()}}--}}
     </div><!-- container-fluid -->
   </nav><!-- navbar -->
   <!-- 内容 -->

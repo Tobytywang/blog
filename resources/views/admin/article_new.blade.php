@@ -47,7 +47,7 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <form role="form" action="/admin/newarticle" method="post">
+    <form role="form" action="/admin/article/new" method="post">
       <div class="row">
         <div class="col-sm-12 col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7">
           <h4>撰写新文章</h4>
@@ -66,10 +66,6 @@
               <option value="">书单</option>
               <option value="">漫画</option>
             </select>
-          </div>
-          <h4>标签</h4>
-          <div class="form-group">
-            <input type="text" name="" value="" class="form-control" placeholder="在此输入">
           </div>
           <h4>发布</h4>
           <div class="form-group clearfix">

@@ -34,7 +34,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/', 'Admin\ArticleController@index');
         Route::get('new', 'Admin\ArticleController@new');
     });
-    Route::get('category', 'Admin\CategoryController@index');
+    Route::group(['prefix' => 'category'], function(){
+        Route::get('/', 'Admin\CategoryController@index');
+        Route::post('new', 'Admin\CategoryController@new_category');
+        Route::post('del', 'Admin\CategoryController@del_category');
+        Route::post('update', 'Admin\CategoryController@update_category');
+    });
     Route::get('logout', 'Auth\LoginController@logout');
 });
 
