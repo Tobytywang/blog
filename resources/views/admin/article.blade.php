@@ -65,41 +65,29 @@
     <div class="row">
       <div class="col-sm-12 col-md-offset-1 col-md-10 col-offset-1 col-lg-9">
       	<table class="table table-bordered">
-      		<thead>
-      			<tr>
-      				<th>标题</th>
-      				<th>分类</th>
-      				<th>标签</th>
+      	  <thead>
+            <tr>
+      		  <th>标题</th>
+              <th>分类</th>
               <th>日期</th>
-      			</tr>
-      		</thead>
-      		<tbody>
-      			<tr>
-      				<td>面向对象程序设计专题研究</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>面向对象程序设计专题研究</td>
               <td>设计规范</td>
-      				<td>面向对象</td>
-      				<td>23/11/2013</td>
-      			</tr>
-      			<tr>
-              <td>设计模式</td>
-              <td>程序设计</td>
-      				<td>面向对象</td>
-      				<td>23/11/2013</td>
-      			</tr>
-      			<tr>
-              <td>新博客开发</td>
-              <td>Web开发</td>
-      				<td>C++ Java PHP Python</td>
-      				<td>23/11/2013</td>
-      			</tr>
-      			<tr>
-              <td>MySQL安装技巧</td>
-              <td>Web开发</td>
-      				<td>MySQL</td>
-      				<td>23/11/2013</td>
-      			</tr>
-      		</tbody>
+              <td>23/11/2013</td>
+            </tr>
+            @foreach($articles as $article)
+            <tr>
+              <td>{{$article->title}}</td>
+              <td>{{$article->category["name"]}}</td>
+              <td>{{$article->created_at}}</td>
+            </tr>
+            @endforeach
+          </tbody>
         </table>
+        {{$articles->links()}}
       </div>
     </div>
   </div>

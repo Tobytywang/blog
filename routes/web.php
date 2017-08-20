@@ -32,7 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', 'Admin\WelcomeController@index');
     Route::group(['prefix' => 'article'], function(){
         Route::get('/', 'Admin\ArticleController@index');
-        Route::get('new', 'Admin\ArticleController@new');
+        Route::get('new', 'Admin\ArticleController@create');
+        Route::post('new', 'Admin\ArticleController@new_article');
     });
     Route::group(['prefix' => 'category'], function(){
         Route::get('/', 'Admin\CategoryController@index');

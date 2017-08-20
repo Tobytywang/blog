@@ -36,6 +36,9 @@
           {{--<li class=""><a href="#">博文</a></li>--}}
           {{--<li class=""><a href="#">随笔</a></li>--}}
         </ul>
+        <a type="button" href="/admin" class="btn btn-default navbar-btn pull-right">
+          登陆
+        </a>
       </div>
       {{--{{$articles->links()}}--}}
     </div><!-- container-fluid -->
@@ -78,6 +81,7 @@
 				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
 				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
 		</ul>
+        {{$articles->links()}}
       </div>
     </div>
   </div>

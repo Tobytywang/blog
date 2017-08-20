@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CreateArticlesTable extends Migration
 {
     /**
@@ -15,27 +16,20 @@ class CreateArticlesTable extends Migration
     {
       Schema::create('articles', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('category_id')->unsigned()->default(0);
-          $table->string('slug')->unique();
+          $table->integer('category_id')->default(0);
           $table->string('title');
-          $table->string('subtitle')->default('');
-          // $table->json('content');
-          $table->text('content')->default('');
-          $table->text('markdown')->default('');
-          $table->integer('view_count')->unsigned()->default(0)->index();
+          $table->string('slug')->unique();
+          $table->text('content')->nullable();
+          $table->text('markdown')->nullable();
+          $table->integer('view_count')->default(0);
           $table->timestamp('updated_at')->nullable();
           $table->timestamp('created_at')->nullable();
-          $table->foreign('category_id')
-              ->references('id')
-              ->on('categories')
-              ->onUpdate('cascade')
-              ->onDelete('cascade');
       });
     }
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+//    public function category()
+//    {
+//        return $this->belongsTo(Category::class);
+//    }
     /**
      * Reverse the migrations.
      *
@@ -43,8 +37,8 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::table('articles', function(Blueprint $tabel){
-            $table->dropForeign('posts_category_id_foreign');
+        Schema::table('articles', function(Blueprint $table){
+            $table->dropForeign('category_id');
         });
         Schema::dropIfExists('articles');
     }
