@@ -36,7 +36,7 @@ class ArticleController extends Controller
         $article->title       = request('title');
         $article->slug        = '/article/'.request('slug');
         $article->category_id = request('category_id');
-        $article->content     = request('test-editormd-html-code');
+        $article->content     = request('editormd-html-code');
         $article->markdown    = request('markdown');
         $article->save();
         return redirect()->to('admin/article');
@@ -44,7 +44,18 @@ class ArticleController extends Controller
 
     public function del_article()
     {
-        DB::table('articles')->where('id', '=', request('id'))->delete();
+        Article::where('id', '=', request('id'))->delete();
         return redirect()->to('admin/article');
+    }
+
+    public function update_category()
+    {
+        // DB::table('articles')->insert([
+        //     'name' => request('name'),
+        //     'father' => request('father'),
+        //     'path' => '/category/'. request('name'),
+        //     'type' => 'column'
+        // ]);
+        return redirect()->to('admin/category');
     }
 }

@@ -23,4 +23,15 @@ class IndexController extends Controller
         $articles = DB::table('articles')->where('category_id', $cate_id)->paginate(15);
         return view("index", compact(['articles' => 'articles', 'categories' => 'categories']));
     }
+    public function article($id){
+        // if (Article::where('id', '=', $id)->count() <= 0)
+        // {
+        //  return view("404", compact('id'));
+        // }
+        $article = Article::findOrFail($id);
+        // if ($article->id <= 0) {
+        //     return view("404");
+        // }
+        return view("article", compact('article'));
+    }
 }

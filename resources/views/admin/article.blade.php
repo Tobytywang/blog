@@ -67,22 +67,30 @@
       	<table class="table table-bordered">
       	  <thead>
             <tr>
-      		  <th>标题</th>
+      		    <th>标题</th>
               <th>分类</th>
               <th>日期</th>
+              <th>操作</th>
             </tr>
           </thead>
           <tbody>
-            <!-- <tr>
-              <td>面向对象程序设计专题研究</td>
-              <td>设计规范</td>
-              <td>23/11/2013</td>
-            </tr> -->
             @foreach($articles as $article)
             <tr>
-              <td>{{$article->title}}</td>
+              <td><a href="/article/{{$article->id}}">{{$article->title}}</a></td>
               <td>{{$article->category["name"]}}</td>
               <td>{{$article->created_at}}</td>
+              <td>
+                <form action="/admin/article/update" method="post" style="display:inline;">
+                  {{csrf_field()}}
+                  <input type="hidden" value="{{$article->id}}">
+                  <input class="btn btn-default btn-sm" type="submit" value="编辑">
+                </form>
+                <form action="/admin/article/del" method="post" style="display:inline;">
+                  {{csrf_field()}}
+                  <input type="hidden" name="id" value="{{$article->id}}">
+                  <input class="btn btn-default btn-sm" type="submit" value="删除">
+                </form>
+              </td>
             </tr>
             @endforeach
           </tbody>

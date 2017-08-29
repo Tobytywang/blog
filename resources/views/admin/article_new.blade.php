@@ -92,12 +92,13 @@
             width: "100%",
             height: 436,
             path : "/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+            saveHTMLToTextarea : true,
             toolbarIcons : function(){
               return ["undo", "redo", "|", "bold", "hr", "|", "preview", "watch", "|", "info", "testIcon", "testIcon2", "file", "faicon", "||", "watch", "fullscreen", "preview", "testIcon"]
             },
             saveHTMLToTextarea:true,
           });
-          editor.getHTML();
+          // editor.getHTML();
       });
   </script>
 </body>

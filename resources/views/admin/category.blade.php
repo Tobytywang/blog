@@ -55,18 +55,18 @@
             <tr>
               <td>{{$category->name}}</td>
               <td>{{$category->father}}</td>
-                <td>
-                  <form action="/admin/category/update" method="post" style="display:inline;">
-                    {{csrf_field()}}
-                    <input type="hidden" value="{{$category->id}}">
-                    <input class="btn btn-default btn-sm" type="submit" value="编辑">
-                  </form>
-                  <form action="/admin/category/del" method="post" style="display:inline;">
-                    {{csrf_field()}}
-                    <input type="hidden" name="id" value="{{$category->id}}">
-                    <input class="btn btn-default btn-sm" type="submit" value="删除">
-                  </form>
-                </td>
+              <td>
+                <form action="/admin/category/update" method="post" style="display:inline;">
+                  {{csrf_field()}}
+                  <input type="hidden" value="{{$category->id}}">
+                  <input class="btn btn-default btn-sm" type="submit" value="编辑">
+                </form>
+                <form action="/admin/category/del" method="post" style="display:inline;">
+                  {{csrf_field()}}
+                  <input type="hidden" name="id" value="{{$category->id}}">
+                  <input class="btn btn-default btn-sm" type="submit" value="删除">
+                </form>
+              </td>
             </tr>
             @endforeach
           </tbody>

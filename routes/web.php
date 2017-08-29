@@ -15,7 +15,7 @@
 // });
 Route::get('/', 'IndexController@index');
 Route::get('category/{category}', 'IndexController@category');
-
+Route::get('article/{id}', 'IndexController@article');
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/', 'Admin\ArticleController@index');
         Route::get('new', 'Admin\ArticleController@create');
         Route::post('new', 'Admin\ArticleController@new_article');
+        Route::post('del', 'Admin\ArticleController@del_article');
+        Route::post('update', 'Admin\ArticleController@update_article');
     });
     Route::group(['prefix' => 'category'], function(){
         Route::get('/', 'Admin\CategoryController@index');

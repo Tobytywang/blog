@@ -9,5 +9,6 @@
 <body>
   <h1 style="width:280px;margin:0 auto;margin-top:100px;">404 NOT FOUND<h1>
   <h3 style="width:80px;margin:0 auto;"><a style="text-decoration:none;" href="/">HOME</a></h3>
+  {{$slug}}
 </body>
 </html>
