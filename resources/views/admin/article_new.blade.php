@@ -47,29 +47,30 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <form role="form" action="/admin/newarticle" method="post">
+    <form role="form" action="/admin/article/new" method="post">
+    {{csrf_field()}}
       <div class="row">
         <div class="col-sm-12 col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7">
           <h4>撰写新文章</h4>
           <div class="form-group">
-            <input type="text" name="" value="" class="form-control" placeholder="在此输入标题">
+            <input type="text" name="title" value="" class="form-control" placeholder="在此输入标题">
+          </div>
+          <div class="form-group">
+            <input type="text" name="slug" value="" class="form-control" placeholder="在此输入文章链接">
           </div>
           <div class="form-group" id="editormd">
-            <textarea style="display:none;" class="form-control">### Hello Editor.md !</textarea>
+            <textarea style="display:none;" class="form-control" name="markdown">### Hello Editor.md !</textarea>
           </div>
         </div>
-        <div class="hidden-sm col-md-3 col-lg-3">
+        <div class="col-sm-12 col-md-3 col-lg-3">
           <h4>分类</h4>
           <div class="form-group">
-            <select name="" class="form-control">
-              <option value="">程序</option>
-              <option value="">书单</option>
-              <option value="">漫画</option>
+            <select name="category_id" class="form-control">
+              <option value="0">无分类</option>
+              @foreach($categories as $category)
+              <option value="{{$category->id}}">{{$category->name}}</option>
+              @endforeach
             </select>
-          </div>
-          <h4>标签</h4>
-          <div class="form-group">
-            <input type="text" name="" value="" class="form-control" placeholder="在此输入">
           </div>
           <h4>发布</h4>
           <div class="form-group clearfix">
@@ -89,20 +90,14 @@
       $(function() {
           var editor = editormd("editormd", {
             width: "100%",
-            height: 460,
+            height: 436,
             path : "/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
             toolbarIcons : function(){
-              return ["undo", "redo", "|", "bold", "hr", "|", "preview", "watch", "|", "fullscreen", "info", "testIcon", "testIcon2", "file", "faicon", "||", "watch", "fullscreen", "preview", "testIcon"]
-            }
+              return ["undo", "redo", "|", "bold", "hr", "|", "preview", "watch", "|", "info", "testIcon", "testIcon2", "file", "faicon", "||", "watch", "fullscreen", "preview", "testIcon"]
+            },
+            saveHTMLToTextarea:true,
           });
-
-          /*
-          // or
-          var editor = editormd({
-              id   : "editormd",
-              path : "../lib/"
-          });
-          */
+          editor.getHTML();
       });
   </script>
 </body>

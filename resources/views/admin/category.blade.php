@@ -32,13 +32,6 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="/admin/logout">登出</a></li>
-                    <!-- <li><a href="#">jmeter</a></li>
-                    <li><a href="#">EJB</a></li>
-                    <li><a href="#">Jasper Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li> -->
                 </ul>
             </li>
         </ul>
@@ -50,58 +43,75 @@
       <div class="col-sm-8 col-md-offset-1 col-md-6 col-lg-offset-1 col-lg-6">
         <h4>目录分类</h4>
         <table class="table table-bordered">
-      		<thead>
-      			<tr>
-      				<th>名称</th>
-      				<th>总数</th>
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>总数</th>
               <th>操作</th>
-      			</tr>
-      		</thead>
-      		<tbody>
-      			<tr>
-      				<td>程序</td>
-              <td>8</td>
-              <td>编辑 删除</td>
-      			</tr>
-      			<tr>
-              <td>游戏</td>
-              <td>5</td>
-              <td>编辑 删除</td>
-      			</tr>
-      			<tr>
-              <td>读书</td>
-              <td>18</td>
-              <td>编辑 删除</td>
-      			</tr>
-      			<tr>
-              <td>漫画</td>
-              <td>1</td>
-              <td>编辑 删除</td>
-      			</tr>
-      		</tbody>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($categories as $category)
+            <tr>
+              <td>{{$category->name}}</td>
+              <td>{{$category->father}}</td>
+                <td>
+                  <form action="/admin/category/update" method="post" style="display:inline;">
+                    {{csrf_field()}}
+                    <input type="hidden" value="{{$category->id}}">
+                    <input class="btn btn-default btn-sm" type="submit" value="编辑">
+                  </form>
+                  <form action="/admin/category/del" method="post" style="display:inline;">
+                    {{csrf_field()}}
+                    <input type="hidden" name="id" value="{{$category->id}}">
+                    <input class="btn btn-default btn-sm" type="submit" value="删除">
+                  </form>
+                </td>
+            </tr>
+            @endforeach
+          </tbody>
         </table>
       </div>
       <div class="col-sm-4 col-md-4 col-lg-3">
         <h4>添加新目录分类</h4>
-        <form role="form">
+        @if (count($errors) > 0)
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+        <form role="form" action="/admin/category/new" method="post">
+          {{--<input type="hidden" name="_token" value="{{csrf_token()}}"/>--}}
+          {{csrf_field()}}
           <div class="form-group">
-            <label for="firstname" class="control-label">名称</label>
+            <label for="name" class="control-label">名称</label>
             <div class="">
-              <input type="text" class="form-control" id="firstname" placeholder="请输入名字">
+              <input type="text" class="form-control" id="name" name="name" placeholder="请输入名字">
             </div>
           </div>
           <div class="form-group">
             <label for="lastname" class="control-label">父级分类目录</label>
             <div class="">
-              <select class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <select class="form-control" name="father">
+                <option value="0">未分类</option>
+                @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
               </select>
             </div>
           </div>
+          {{--<div class="form-group">--}}
+            {{--<label for="lastname" class="control-label">目录类型</label>--}}
+            {{--<div class="">--}}
+              {{--<select class="form-control" name="type">--}}
+                {{--<option value="column">栏目</option>--}}
+                {{--<option value="page">页面</option>--}}
+               {{--</select>--}}
+            {{--</div>--}}
+          {{--</div>--}}
           <div class="form-group">
             <div class="">
               <button type="submit" class="btn btn-default">添加新分类目录</button>

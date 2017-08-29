@@ -32,7 +32,6 @@ $factory->define(App\Article::class, function (Faker\Generator $faker) {
         'category_id' => $category_id,
         'slug'        => $slug,
         'title'       => $title,
-        'subtitle'    => $title,
         'content'     => '内容',
         'markdown'    => '内容',
     ];

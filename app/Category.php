@@ -9,7 +9,7 @@ class Category extends Model
     //
     public $timestamps = false;
 
-    public function articles()
+    public function article()
     {
         return $this->hasMany(Article::class);
     }
