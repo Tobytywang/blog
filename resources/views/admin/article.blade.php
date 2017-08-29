@@ -73,11 +73,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <!-- <tr>
               <td>面向对象程序设计专题研究</td>
               <td>设计规范</td>
               <td>23/11/2013</td>
-            </tr>
+            </tr> -->
             @foreach($articles as $article)
             <tr>
               <td>{{$article->title}}</td>

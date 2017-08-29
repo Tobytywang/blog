@@ -58,7 +58,7 @@
       <div class="posts">
 		<ul class="list-unstyled">
           @foreach($articles as $article)
-                <li><a href="" class="postname">{{$article->title}}<p class="posttime">{{$article->created_at}}</p></a></li>
+                <li><a href="{{$article->link}}" class="postname">{{$article->title}}<p class="posttime">{{$article->created_at}}</p></a></li>
           @endforeach
           {{--<li class="time">2017年7月</li>--}}
 				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}

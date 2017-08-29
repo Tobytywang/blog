@@ -13,9 +13,6 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-//        factory(\App\Category::class, 5)->create()->each(function($category){
-//            $category->articles()->save(factory(\App\Article::class)->make());
-//        });
         factory(Category::class, 6)->create();
     }
 }

@@ -24,10 +24,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+// 填充Article
 $factory->define(App\Article::class, function (Faker\Generator $faker) {
     $category_id = App\Category::pluck('id')->random();
     $slug = $faker->sentence(mt_rand(1, 2));
     $title = $slug;
+
     return [
         'category_id' => $category_id,
         'slug'        => $slug,
@@ -37,6 +39,7 @@ $factory->define(App\Article::class, function (Faker\Generator $faker) {
     ];
 });
 
+// 填充Category
 $factory->define(App\Category::class, function(Faker\Generator $faker) {
     $name = $faker->word(mt_rand(1, 1));
     return [
@@ -45,4 +48,5 @@ $factory->define(App\Category::class, function(Faker\Generator $faker) {
         'path'        => '/category/'.$name,
         'type'        => 'column',
     ];
+
 });

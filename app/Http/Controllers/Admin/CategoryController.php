@@ -35,9 +35,9 @@ class CategoryController extends Controller
     public function del_category()
     {
         // 如果栏目下有内容不能删除
-        if(DB::table('articles')->where('category_id', '=', 'id')->count() != 0)
+        if(DB::table('articles')->where('category_id', '=', request('id'))->count() != 0)
         {
-            return redirect()-to('admin/category');
+            return redirect()->to('admin/category');
         }
         DB::table('categories')->where('id', '=', request('id'))->delete();
         return redirect()->to('admin/category');
