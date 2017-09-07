@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Category;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -18,20 +18,14 @@ class IndexController extends Controller
         if (Category::where('name', '=', $category)->count() <= 0) {
          return view("404");
         }
-        $cate_id = DB::table('categories')->where('name', $category)->value('id');
-        $categories = DB::table('categories')->get();
-        $articles = DB::table('articles')->where('category_id', $cate_id)->paginate(15);
+        $cate_id = Category::where('name', $category)->value('id');
+        $categories = category::all();
+        $articles = Article::where('category_id', $cate_id)->paginate(15);
         return view("index", compact(['articles' => 'articles', 'categories' => 'categories']));
     }
     public function article($id){
-        // if (Article::where('id', '=', $id)->count() <= 0)
-        // {
-        //  return view("404", compact('id'));
-        // }
         $article = Article::findOrFail($id);
-        // if ($article->id <= 0) {
-        //     return view("404");
-        // }
-        return view("article", compact('article'));
+        $categories = Category::all();
+        return view("article", compact(['article' => 'article', 'categories' => 'categories']));
     }
 }

@@ -25,13 +25,6 @@ class ArticleController extends Controller
     }
     public function new_article(StoreArticle $request)
     {
-        // DB::table('articles')->insert([
-        //     'title'        =>  request('title'),
-        //     'slug'         =>  '/article/'.request('slug'),
-        //     'category_id'  =>  request('category_id'),
-        //     'content'      =>  request('test-editormd-html-code'),
-        //     'markdown'     =>  request('markdown'),
-        // ]);
         $article = new Article;
         $article->title       = request('title');
         $article->slug        = '/article/'.request('slug');

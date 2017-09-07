@@ -11,12 +11,14 @@ class CategoryController extends Controller
 {
     protected $category;
 
+    // 首页
     public function index()
     {
         $categories = DB::table('categories')->get();
         return view('/admin/category', compact('categories'));
     }
 
+    // 处理post请求
     public function new_category(StoreCategory $request)
     {
         // 新增不能超过8个
@@ -32,6 +34,7 @@ class CategoryController extends Controller
         return redirect()->to('admin/category');
     }
 
+    // 删除目录
     public function del_category()
     {
         // 如果栏目下有内容不能删除
@@ -43,6 +46,7 @@ class CategoryController extends Controller
         return redirect()->to('admin/category');
     }
 
+    // 更新目录的内容
     public function update_category()
     {
         DB::table('categories')->insert(['name' => request('name'), 'father' => request('father'), 'path' => '/category/'. request('name'), 'type' => 'column']);

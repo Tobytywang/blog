@@ -22,33 +22,32 @@
           <span class="icon-bar"></span>
         </button>
 		    <div class="title">
-			    <a class="navbar-brand" href="#" alt="凌云天羽"><img src="/images/avatar2.png"></a>
+			    <a class="navbar-brand" href="/" alt="凌云天羽"><img src="/images/avatar2.png"></a>
 		    </div>
       </div>
       <div class="collapse navbar-collapse" id="titlebar">
         <ul class="nav navbar-nav top-navbar-nav">
-          <li class=""><a href="#">分类</a></li>
-          <li class=""><a href="#">日期</a></li>
-          <li class=""><a href="#">笔记</a></li>
-          <li class=""><a href="#">博文</a></li>
-          <li class=""><a href="#">随笔</a></li>
+          @foreach($categories as $category)
+                <li class=""><a href="{{$category->path}}">{{$category->name}}</a></li>
+          @endforeach
+          {{--<li class=""><a href="#">分类</a></li>--}}
+          {{--<li class=""><a href="#">日期</a></li>--}}
+          {{--<li class=""><a href="#">笔记</a></li>--}}
+          {{--<li class=""><a href="#">博文</a></li>--}}
+          {{--<li class=""><a href="#">随笔</a></li>--}}
         </ul>
+        <a type="button" href="/admin" class="btn btn-default navbar-btn pull-right">
+          登陆
+        </a>
       </div>
+      {{--{{$articles->links()}}--}}
     </div><!-- container-fluid -->
   </nav><!-- navbar -->
   <!-- 内容 -->
   <div class="container">
     <div class="col-sm-9 col-md-9 col-lg-9">
 		  <div class="posts">
-			  <!-- <h1>标题</h1>
-			  <h2>二级标题</h2>
-			  <h3>三级标题</h3>
-			  <h4>四级标题</h4>
-			  <h5>五级标题</h5>
-			  <h6>六级标题</h6>
-			  <p>这里是对话<p> -->
-        <!-- {{$article->content}} -->
-        {!! $article->content !!}
+      {!! $article->content !!}
 		  </div>
 	  </div>
 	  <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">

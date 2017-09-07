@@ -28,6 +28,16 @@ body{
 	font-weight: inherit;
 	font-size: 1.175em;
 }
+.pagi {
+	padding: 20px 10px;
+	background: #f8f8f8;
+	margin-top: -40px;
+	margin-bottom: 35px;
+	position: relative;
+	overflow: hidden;
+	font-weight: inherit;
+	font-size: 1.175em;
+}
 .posts .title {
 
 }

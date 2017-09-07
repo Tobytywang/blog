@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/editormd.min.css" />
 </head>
-<body>
+<body style="background-color:#f8f8f8;">
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -23,7 +23,7 @@
       </div>
       <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/admin/article">文章</a></li>
+            <li class="active"><a href="/admin/article">日志</a></li>
             <li><a href="/admin/category">分类</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

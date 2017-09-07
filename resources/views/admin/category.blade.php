@@ -8,7 +8,7 @@
   <!-- 新 Bootstrap 核心 CSS 文件 -->
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:#f8f8f8;">
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
     <div class="navbar-header">
@@ -22,7 +22,7 @@
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/admin/article">文章</a></li>
+          <li><a href="/admin/article">日志</a></li>
           <li class="active"><a href="/admin/category">分类</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -46,6 +46,7 @@
           <thead>
             <tr>
               <th>名称</th>
+              <th>类型</th>
               <th>总数</th>
               <th>操作</th>
             </tr>
@@ -54,6 +55,7 @@
             @foreach($categories as $category)
             <tr>
               <td>{{$category->name}}</td>
+              <td>{{$category->type}}</td>
               <td>{{$category->father}}</td>
               <td>
                 <form action="/admin/category/update" method="post" style="display:inline;">
@@ -103,15 +105,16 @@
               </select>
             </div>
           </div>
-          {{--<div class="form-group">--}}
-            {{--<label for="lastname" class="control-label">目录类型</label>--}}
-            {{--<div class="">--}}
-              {{--<select class="form-control" name="type">--}}
-                {{--<option value="column">栏目</option>--}}
-                {{--<option value="page">页面</option>--}}
-               {{--</select>--}}
-            {{--</div>--}}
-          {{--</div>--}}
+          <div class="form-group">
+            <label for="lastname" class="control-label">目录类型</label>
+            <div class="">
+              <select class="form-control" name="type">
+                <option value="time">栏目</option>
+                <option value="arch">归档</option>
+                <option value="page">单页</option>
+               </select>
+            </div>
+          </div>
           <div class="form-group">
             <div class="">
               <button type="submit" class="btn btn-default">添加新分类目录</button>

@@ -56,32 +56,16 @@
     </div>
     <div class="col-sm-10 col-md-10 col-lg-10">
       <div class="posts">
-		<ul class="list-unstyled">
+        <ul class="list-unstyled">
           @foreach($articles as $article)
                 <li><a href="/article/{{$article->id}}" class="postname">{{$article->title}}<p class="posttime">{{$article->created_at}}</p></a></li>
           @endforeach
-          {{--<li class="time">2017年7月</li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-          {{--<li class="time">2017年6月</li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-          {{--<li class="time">2017年5月</li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-          {{--<li class="time">2017年4月</li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-          {{--<li class="time">2017年3月</li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-				  {{--<li><a href="" class="postname">文章一<p class="posttime">1 Days ago</p></a></li>--}}
-		</ul>
-        {{$articles->links()}}
+        </ul>
+      </div>
+      <div class="pagi">
+        <div style="position:absolute;left:0px;bottom:0px; width:100%;margin:0px auto;text-align:center;">
+          {{$articles->links()}}
+        </div>
       </div>
     </div>
   </div>
