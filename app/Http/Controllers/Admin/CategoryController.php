@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreCategory;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreCategory;
 use App\Http\Controllers\Controller;
+use App\Category;
 
 
 class CategoryController extends Controller
@@ -22,15 +23,18 @@ class CategoryController extends Controller
     public function new_category(StoreCategory $request)
     {
         // 新增不能超过8个
-        if(DB::table('categories')->where('father', '=', 0)->count() >= 7){
+        // if(DB::table('categories')->where('father', '=', 0)->count() >= 7)
+        if (Category::roots()->count() >= 7)
+        {
             return redirect()->to('admin/category');
         }
-        DB::table('categories')->insert([
+        $category = Category::create([
             'name' => request('name'),
-            'father' => request('father'),
             'path' => '/category/'. request('name'),
             'type' => 'column'
         ]);
+        $father = Category::where('parent_id', '=', request('father'));
+        $category->makeChildOf($father);
         return redirect()->to('admin/category');
     }
 

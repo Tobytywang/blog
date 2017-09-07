@@ -9,14 +9,16 @@ class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 基本的属性：id,category_id,title,slug,content/markdown,viewcount,created_at/updated_at
+     * 对于时间的文章：需要标签和时间
+     * 对于归档的文章：需要目录id
      * @return void
      */
     public function up()
     {
       Schema::create('articles', function (Blueprint $table) {
         $table->increments('id');
-        $table->integer('category_id')->default(0);
+        
         $table->string('title');
         $table->string('slug')->unique();
         $table->text('content')->nullable();
@@ -26,10 +28,7 @@ class CreateArticlesTable extends Migration
         $table->dateTime('updated_at');
       });
     }
-//    public function category()
-//    {
-//        return $this->belongsTo(Category::class);
-//    }
+
     /**
      * Reverse the migrations.
      *
