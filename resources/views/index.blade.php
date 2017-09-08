@@ -58,7 +58,7 @@
       <div class="posts">
         <ul class="list-unstyled">
           @foreach($articles as $article)
-                <li><a href="/article/{{$article->id}}" class="postname">{{$article->title}}<p class="posttime">{{$article->created_at}}</p></a></li>
+                <li><a href="/article/{{$article->id}}" class="postname">{{$article->title}}<p class="posttime">{{$article->created_at->toDateString()}}</p></a></li>
           @endforeach
         </ul>
       </div>

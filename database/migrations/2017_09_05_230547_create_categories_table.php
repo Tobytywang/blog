@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration {
       // We add indexes on parent_id, lft, rgt columns by default.
       $table->increments('id');
       $table->string('name')->unique();
+      $table->string('slug')->unique();
       $table->string('path')->unique();
       $table->enum('type', ['time', 'arch', 'page']);
 
@@ -29,8 +30,6 @@ class CreateCategoriesTable extends Migration {
 
       // Add needed columns here (f.ex: name, slug, path, etc.)
       // $table->string('name', 255);
-
-      $table->timestamps();
     });
   }
 

@@ -45,18 +45,18 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>名称</th>
-              <th>类型</th>
-              <th>总数</th>
+              <th style="vertical-align:middle;">名称</th>
+              <th style="vertical-align:middle;">类型</th>
+              <th style="vertical-align:middle;">总数</th>
               <th>操作</th>
             </tr>
           </thead>
           <tbody>
             @foreach($categories as $category)
             <tr>
-              <td>{{$category->name}}</td>
-              <td>{{$category->type}}</td>
-              <td>{{$category->father}}</td>
+              <td style="vertical-align:middle;">{{$category->name}}</td>
+              <td style="vertical-align:middle;">{{$category->type}}</td>
+              <td style="vertical-align:middle;"></td>
               <td>
                 <form action="/admin/category/update" method="post" style="display:inline;">
                   {{csrf_field()}}
@@ -95,6 +95,12 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="name" class="control-label">别名</label>
+            <div class="">
+              <input type="text" class="form-control" id="slug" name="slug" placeholder="请输入别名（需为字母或数字 ）">
+            </div>
+          </div>
+          <div class="form-group">
             <label for="lastname" class="control-label">父级分类目录</label>
             <div class="">
               <select class="form-control" name="father">
@@ -109,8 +115,8 @@
             <label for="lastname" class="control-label">目录类型</label>
             <div class="">
               <select class="form-control" name="type">
-                <option value="time">栏目</option>
-                <option value="arch">归档</option>
+                <option value="time">归档</option>
+                <option value="arch">栏目</option>
                 <option value="page">单页</option>
                </select>
             </div>

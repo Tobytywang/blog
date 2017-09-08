@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Baum\Node;
 
-class Category extends Model
+class Category extends Node
 {
     //
     public $timestamps = false;
