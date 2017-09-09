@@ -37,8 +37,8 @@ class CategoryController extends Controller
             $category->parent_id = null;
             $category->save();
         } else {
-            $father = Category::where('parent_id', '=', request('father'));
-            $category->makeChildOf($father);
+            $father = Category::where('id', '=', request('father'));
+            $category->makeChildOf(request('father'));
         }
         return redirect()->to('admin/category');
     }
@@ -46,10 +46,6 @@ class CategoryController extends Controller
     // 删除目录
     public function del_category()
     {
-        // 如果栏目下有内容（其他栏目或者文章）不能删除
-        // if(Category::where('category_id', '=', request('id'))->count() != 0)
-        // $articles = Article::withCount('category')->get();
-        // for 
         if ((Category::where('parent_id', '=', request('id'))->count()>0) ||
             (Article::where('category_id', '=', request('id'))->count() > 0))
         {
