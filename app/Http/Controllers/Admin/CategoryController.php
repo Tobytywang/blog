@@ -46,12 +46,16 @@ class CategoryController extends Controller
     // 删除目录
     public function del_category()
     {
+        $category = Category::Where('id', '=', request('id'))->first();
+        if ($category['name'] == '日志' || $category['name']=='分类'){
+            return redirect()->to('admin/category');
+        }
         if ((Category::where('parent_id', '=', request('id'))->count()>0) ||
             (Article::where('category_id', '=', request('id'))->count() > 0))
         {
             return redirect()->to('admin/category');
         }
-        Category::where('id', '=', request('id'))->delete();
+        $category->delete();
         return redirect()->to('admin/category');
     }
 

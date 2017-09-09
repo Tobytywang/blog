@@ -33,13 +33,6 @@
             </a>
             <ul class="dropdown-menu">
                 <li><a href="/admin/logout">登出</a></li>
-                <!-- <li><a href="#">jmeter</a></li>
-                <li><a href="#">EJB</a></li>
-                <li><a href="#">Jasper Report</a></li>
-                <li class="divider"></li>
-                <li><a href="#">分离的链接</a></li>
-                <li class="divider"></li>
-                <li><a href="#">另一个分离的链接</a></li> -->
             </ul>
           </li>
         </ul>
@@ -68,7 +61,16 @@
             <select name="category_id" class="form-control">
               <option value="0">无分类</option>
               @foreach($categories as $category)
-              <option value="{{$category->id}}">{{$category->name}}</option>
+                @if ($category->depth < 3)
+                  <option value="{{$category->id}}">
+                  @if ($category->depth == 1)
+                  &nbsp;&nbsp;&nbsp;
+                  @elseif ($category->depth == 2)
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  @else
+                  @endif
+                  {{$category->name}}</option>
+                @endif
               @endforeach
             </select>
           </div>

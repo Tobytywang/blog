@@ -54,10 +54,21 @@
           <tbody>
             @foreach($categories as $category)
             <tr>
-              <td style="vertical-align:middle;">{{$category->name}}</td>
+              <td style="vertical-align:middle;">
+              @if ($category->depth == 1)
+              &nbsp;&nbsp;&nbsp;
+              @elseif ($category->depth == 2)
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              @else
+              @endif
+              {{$category->name}}
+              </td>
               <td style="vertical-align:middle;">{{$category->type}}</td>
               <td style="vertical-align:middle;"></td>
               <td>
+                @if ($category->name == "日志")
+                @elseif  ($category->name == "分类")
+                @else
                 <form action="/admin/category/update" method="post" style="display:inline;">
                   {{csrf_field()}}
                   <input type="hidden" value="{{$category->id}}">
@@ -68,6 +79,7 @@
                   <input type="hidden" name="id" value="{{$category->id}}">
                   <input class="btn btn-default btn-sm" type="submit" value="删除">
                 </form>
+                @endif
               </td>
             </tr>
             @endforeach
@@ -106,7 +118,16 @@
               <select class="form-control" name="father">
                 <option value="0">未分类</option>
                 @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
+                  @if ($category->depth < 3)
+                    <option value="{{$category->id}}">
+                    @if ($category->depth == 1)
+                    &nbsp;&nbsp;&nbsp;
+                    @elseif ($category->depth == 2)
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @else
+                    @endif
+                    {{$category->name}}</option>
+                  @endif
                 @endforeach
               </select>
             </div>

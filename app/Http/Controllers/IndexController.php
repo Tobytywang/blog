@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function index(){
         $articles = Article::orderBy('created_at', 'desc')->paginate(15);
-        $categories = Category::all();
+        $categories = Category::where('depth', '=', 0)->get();
         return view("index", compact(['articles' => 'articles', 'categories' => 'categories']));
     }
 

@@ -25,7 +25,7 @@ class StoreCategory extends FormRequest
     {
         return [
             //
-            'name'   => 'required|min:2|max:4',
+            'name'   => 'required|min:2|max:11',
             'father' => 'numeric',
 //            'type'   => [Rule::in(['column', 'page']),],
         ];
