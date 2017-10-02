@@ -118,15 +118,18 @@
               <select class="form-control" name="father">
                 <option value="0">未分类</option>
                 @foreach($categories as $category)
-                  @if ($category->depth < 3)
-                    <option value="{{$category->id}}">
-                    @if ($category->depth == 1)
-                    &nbsp;&nbsp;&nbsp;
-                    @elseif ($category->depth == 2)
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    @else
+                  @if ($category->type == "arch")
+                    @if ($category->depth < 3)
+                      <option value="{{$category->id}}">
+                      @if ($category->depth == 1)
+                      &nbsp;&nbsp;&nbsp;
+                      @elseif ($category->depth == 2)
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      @else
+                      @endif
+                      {{$category->name}}</option>
                     @endif
-                    {{$category->name}}</option>
+                  @else
                   @endif
                 @endforeach
               </select>
