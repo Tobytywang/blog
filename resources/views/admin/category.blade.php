@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="_token" content="{{ csrf_token() }}"/>
   <title>Document</title>
   <!-- 新 Bootstrap 核心 CSS 文件 -->
   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color:#f8f8f8;">
   <nav class="navbar navbar-default" role="navigation">
@@ -69,11 +74,29 @@
                 @if ($category->name == "日志")
                 @elseif  ($category->name == "分类")
                 @else
-                <form action="/admin/category/update" method="post" style="display:inline;">
-                  {{csrf_field()}}
-                  <input type="hidden" value="{{$category->id}}">
-                  <input class="btn btn-default btn-sm" type="submit" value="编辑">
-                </form>
+                <button id="{{$category->slug}}" class="btn btn-default btn-sm" type="submit">编辑</button>
+                <script>
+                  $(document).ready(function(){
+                    $("#{{$category->slug}}").click(function(){
+                      // 发送ajax请求
+                      // alert("{{$category->name}}");
+                      $.get("/admin/category/get?id={{$category->id}}",
+                       function(data){
+                        // 回调函数
+                        // alert(data["name"]+" "+
+                        //       data["slug"]+" "+
+                        //       data["path"]+" "+
+                        //       data["parent_id"]+" "+
+                        //       data["type"]);
+                        $("#name").attr("value", data["name"]);
+                        $("#slug").attr("value", data["slug"]);
+                        $("#father").val(data["id"]).attr("selected", true);
+                        $("#type").val(data["type"]).attr("selected", true);
+                      });
+                      // headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                    });
+                  });
+                </script>
                 <form action="/admin/category/del" method="post" style="display:inline;">
                   {{csrf_field()}}
                   <input type="hidden" name="id" value="{{$category->id}}">
@@ -115,7 +138,7 @@
           <div class="form-group">
             <label for="lastname" class="control-label">父级分类目录</label>
             <div class="">
-              <select class="form-control" name="father">
+              <select class="form-control" id="father" name="father">
                 <option value="0">未分类</option>
                 @foreach($categories as $category)
                   @if ($category->type == "arch")
@@ -138,7 +161,7 @@
           <div class="form-group">
             <label for="lastname" class="control-label">目录类型</label>
             <div class="">
-              <select class="form-control" name="type">
+              <select class="form-control" id="type" name="type">
                 <option value="time">归档</option>
                 <option value="arch">栏目</option>
                 <option value="page">单页</option>
@@ -147,16 +170,12 @@
           </div>
           <div class="form-group">
             <div class="">
-              <button type="submit" class="btn btn-default">添加新分类目录</button>
+              <button type="submit" class="btn btn-default">提交</button>
             </div>
           </div>
         </form>
       </div>
     </div>
   </div>
-  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

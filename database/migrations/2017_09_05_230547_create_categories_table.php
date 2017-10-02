@@ -23,7 +23,7 @@ class CreateCategoriesTable extends Migration {
       $table->string('path')->unique();
       $table->enum('type', ['time', 'arch', 'page']);
 
-      $table->integer('parent_id')->nullable()->index();
+      $table->integer('parent_id')->default(0)->index();
       $table->integer('lft')->nullable()->index();
       $table->integer('rgt')->nullable()->index();
       $table->integer('depth')->nullable();

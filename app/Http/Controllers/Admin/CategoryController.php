@@ -59,6 +59,14 @@ class CategoryController extends Controller
         return redirect()->to('admin/category');
     }
 
+    public function get_item()
+    {
+        $category = Category::where('id', '=', request('id'))->first();
+        if ($category['name'] == '日志' || $category['name'] == '分类') {
+        }
+        return response()->json($category);
+    }
+
     // 更新目录的内容
     public function update_category()
     {

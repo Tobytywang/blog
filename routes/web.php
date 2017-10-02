@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/', 'Admin\CategoryController@index');
         Route::post('new', 'Admin\CategoryController@new_category');
         Route::post('del', 'Admin\CategoryController@del_category');
+        Route::get('get', 'Admin\CategoryController@get_item');
         Route::post('update', 'Admin\CategoryController@update_category');
     });
     Route::get('logout', 'Auth\LoginController@logout');
