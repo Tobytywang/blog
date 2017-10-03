@@ -46,13 +46,13 @@
         <div class="col-sm-12 col-md-offset-1 col-md-7 col-lg-offset-1 col-lg-7">
           <h4>撰写新文章</h4>
           <div class="form-group">
-            <input type="text" name="title" value="" class="form-control" placeholder="在此输入标题">
+            <input type="text" name="title" value="{{$article->title}}" class="form-control" placeholder="在此输入标题">
           </div>
           <div class="form-group">
-            <input type="text" name="slug" value="" class="form-control" placeholder="在此输入文章链接">
+            <input type="text" name="slug" value="{{$article->slug}}" class="form-control" placeholder="在此输入文章链接">
           </div>
           <div class="form-group" id="editormd">
-            <textarea style="display:none;" class="form-control" name="markdown">### Hello Editor.md !</textarea>
+            <textarea style="display:none;" class="form-control" name="markdown">{{$article->markdown}}</textarea>
           </div>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3">
@@ -62,7 +62,11 @@
               <option value="0">无分类</option>
               @foreach($categories as $category)
                 @if ($category->depth < 3)
-                  <option value="{{$category->id}}">
+                  <option value="{{$category->id}}"
+                  @if ($category->id = $article->category_id)
+                    selected="selected"
+                  @endif
+                  >
                   @if ($category->depth == 1)
                   &nbsp;&nbsp;&nbsp;
                   @elseif ($category->depth == 2)

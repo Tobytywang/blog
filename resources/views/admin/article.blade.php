@@ -28,7 +28,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Java <b class="caret"></b>
+                    {{Auth::user()->name}} <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="/admin/logout">登出</a></li>
@@ -80,11 +80,7 @@
               <td>{{$article->category["name"]}}</td>
               <td>{{$article->created_at}}</td>
               <td>
-                <form action="/admin/article/update" method="post" style="display:inline;">
-                  {{csrf_field()}}
-                  <input type="hidden" value="{{$article->id}}">
-                  <input class="btn btn-default btn-sm" type="submit" value="编辑">
-                </form>
+                <a href="/admin/article/new?action=update&id={{$article->id}}" class="btn btn-default btn-sm">编辑</a>
                 <form action="/admin/article/del" method="post" style="display:inline;">
                   {{csrf_field()}}
                   <input type="hidden" name="id" value="{{$article->id}}">

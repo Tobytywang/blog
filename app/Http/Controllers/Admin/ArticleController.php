@@ -6,6 +6,7 @@ use App\Article;
 use App\Category;
 use App\Http\Requests\StoreArticle;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class ArticleController extends Controller
 {
@@ -20,8 +21,17 @@ class ArticleController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view('/admin/article_new', compact('categories'));
+        if (Input::get('action') == 'update') {
+            // 
+            $categories = Category::all();
+            $article = Article::with('category')
+                ->where('id', '=', Input::get('id'))->first();
+            return view('/admin/article_new', compact(['categories' => 'categories', 'article' => 'article']));
+            // return view("404")->with('content', Input::get('id'));
+        } else {
+            $categories = Category::all();
+            return view('/admin/article_new', compact('categories'));
+        }
     }
     public function new_article(StoreArticle $request)
     {

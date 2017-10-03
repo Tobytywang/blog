@@ -178,6 +178,20 @@
           <div class="form-group">
             <div class="">
               <button type="submit" class="btn btn-default">提交</button>
+              <button id="cancel" class="btn btn-default">取消</button>
+              <script>
+                  $(document).ready(function(){
+                    $("#cancel").click(function(){
+                      // 
+                      $("#id").attr("value", "");
+                      $("#name").attr("value", "");
+                      $("#slug").attr("value", "");
+                      $("#father").val(0).attr("selected", true);
+                      $("#type").val("time").attr("selected", true);
+                      return false;
+                    });
+                  });
+              </script>
             </div>
           </div>
         </form>
