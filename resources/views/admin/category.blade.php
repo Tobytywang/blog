@@ -124,7 +124,7 @@
         <form role="form" action="/admin/category/new" method="post">
           {{--<input type="hidden" name="_token" value="{{csrf_token()}}"/>--}}
           {{csrf_field()}}
-          <div class="form-group">
+          <div class="form-group" style="display:none">
             <label for="name" class="control-label">ID</label>
             <div class="">
               <input type="text" class="form-control" id="id" name="id" placeholder="请输入名字">
