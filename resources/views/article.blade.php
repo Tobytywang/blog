@@ -45,7 +45,7 @@
   </nav><!-- navbar -->
   <!-- 内容 -->
   <div class="container">
-	  <div class="hidden-xs col-sm-2 col-md-2 col-lg-2">
+	  <!-- <div class="hidden-xs col-sm-2 col-md-2 col-lg-2">
 		  <div class="right">
 			  <ul>
 				  <li>1.1 如何融入</li>
@@ -54,8 +54,8 @@
 		  </div>
 		  <div class="right">
 		  </div>
-	  </div>
-    <div class="col-sm-10 col-md-10 col-lg-10">
+	  </div> -->
+    <div class="col-sm-12 col-md-12 col-lg-12">
 		  <div class="posts">
       {!! $article->content !!}
 		  </div>

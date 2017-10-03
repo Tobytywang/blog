@@ -36,16 +36,13 @@
           {{--<li class=""><a href="#">博文</a></li>--}}
           {{--<li class=""><a href="#">随笔</a></li>--}}
         </ul>
-        <a type="button" href="/admin" class="btn btn-default navbar-btn pull-right">
-          登陆
-        </a>
       </div>
       {{--{{$articles->links()}}--}}
     </div><!-- container-fluid -->
   </nav><!-- navbar -->
   <!-- 内容 -->
   <div class="container">
-    <div class="hidden-xs col-sm-2 col-md-2 col-lg-2">
+    <!-- <div class="hidden-xs col-sm-2 col-md-2 col-lg-2">
       <div class="left">
         <ul>
           <li><a href="#">星际争霸</a></li>
@@ -53,8 +50,8 @@
           <li><a href="#">文明6</a></li>
         </ul>
       </div>
-    </div>
-    <div class="col-sm-10 col-md-10 col-lg-10">
+    </div> -->
+    <div class="col-sm-12 col-md-12 col-lg-12">
       <div class="posts">
         <ul class="list-unstyled">
           @foreach($articles as $article)
@@ -71,7 +68,8 @@
   </div>
   <!-- 底部 -->
   <div id="footer" class="copyright">
-  	<span><p>Copyright ©2017 凌云天羽 | 蜀ICP备15021845号-1</p></span>
+  	<span><p>凌云天羽 | 蜀ICP备15021845号-1 | <a type="button" href="/admin">登陆</a></p></span>
+
   </div>
 	  <script src="/js/ty.js"></script>
 </body>

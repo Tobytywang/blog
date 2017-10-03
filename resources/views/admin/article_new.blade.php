@@ -29,10 +29,11 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Java <b class="caret"></b>
+                {{Auth::user()->name}} <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="/admin/logout">登出</a></li>
+              <li><a type="button" href="/" target="_blank">首页</a></li>
+              <li><a href="/admin/logout">登出</a></li>
             </ul>
           </li>
         </ul>
