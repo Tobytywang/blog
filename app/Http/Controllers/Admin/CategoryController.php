@@ -23,24 +23,41 @@ class CategoryController extends Controller
     // 处理post请求
     public function new_category(StoreCategory $request)
     {
-        if (Category::roots()->count() >= 7)
-        {
+        if (request('id') > 0) {
+            // 更新逻辑
+            $category = Category::where('id', '=', request('id'))->first();
+            $category->name = request('name');
+            $category->slug = request('slug');
+            $category->path = '/category/' . request('slug');
+            $category->type = request('type');
+            $category->save();
+            if (request('father') == 0){
+                $category->parent_id = 0;
+            } else {
+                $father = Category::where('id', '=', request('father'));
+                $category->makeChildOf(request('father'));
+            }
+            return redirect()->to('admin/category');
+        }  else {
+            if (Category::roots()->count() >= 7)
+            {
+                return redirect()->to('admin/category');
+            }
+            $category = Category::create([
+                'name' => request('name'),
+                'slug' => request('slug'),
+                'path' => '/category/'. request('slug'),
+                'type' => request('type')
+            ]);
+            if (request('father') == 0){
+                $category->parent_id = null;
+                $category->save();
+            } else {
+                $father = Category::where('id', '=', request('father'));
+                $category->makeChildOf(request('father'));
+            }
             return redirect()->to('admin/category');
         }
-        $category = Category::create([
-            'name' => request('name'),
-            'slug' => request('slug'),
-            'path' => '/category/'. request('slug'),
-            'type' => request('type')
-        ]);
-        if (request('father') == 0){
-            $category->parent_id = null;
-            $category->save();
-        } else {
-            $father = Category::where('id', '=', request('father'));
-            $category->makeChildOf(request('father'));
-        }
-        return redirect()->to('admin/category');
     }
 
     // 删除目录
@@ -65,12 +82,5 @@ class CategoryController extends Controller
         if ($category['name'] == '日志' || $category['name'] == '分类') {
         }
         return response()->json($category);
-    }
-
-    // 更新目录的内容
-    public function update_category()
-    {
-        Category::insert(['name' => request('name'), 'father' => request('father'), 'path' => '/category/'. request('name'), 'type' => 'column']);
-        return redirect()->to('admin/category');
     }
 }

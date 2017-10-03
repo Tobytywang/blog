@@ -88,6 +88,7 @@
                         //       data["path"]+" "+
                         //       data["parent_id"]+" "+
                         //       data["type"]);
+                        $("#id").attr("value", data["id"]);
                         $("#name").attr("value", data["name"]);
                         $("#slug").attr("value", data["slug"]);
                         $("#father").val(data["id"]).attr("selected", true);
@@ -123,6 +124,12 @@
         <form role="form" action="/admin/category/new" method="post">
           {{--<input type="hidden" name="_token" value="{{csrf_token()}}"/>--}}
           {{csrf_field()}}
+          <div class="form-group">
+            <label for="name" class="control-label">ID</label>
+            <div class="">
+              <input type="text" class="form-control" id="id" name="id" placeholder="请输入名字">
+            </div>
+          </div>
           <div class="form-group">
             <label for="name" class="control-label">名称</label>
             <div class="">
